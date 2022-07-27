@@ -1,0 +1,135 @@
+[submodule "k/accessibility"]
+	path = k/accessibility
+	url = https://github.com/mgroth0/accessibility
+[submodule "k/async"]
+	path = k/async
+	url = https://github.com/mgroth0/async
+[submodule "k/auto"]
+	path = k/auto
+	url = https://github.com/mgroth0/auto
+[submodule "k/brainstorm"]
+	path = k/brainstorm
+	url = https://github.com/mgroth0/brainstorm
+[submodule "k/caching"]
+	path = k/caching
+	url = https://github.com/mgroth0/caching
+[submodule "k/color"]
+	path = k/color
+	url = https://github.com/mgroth0/color
+[submodule "k/css"]
+	path = k/css
+	url = https://github.com/mgroth0/css
+[submodule "k/dataman"]
+	path = k/dataman
+	url = https://github.com/mgroth0/dataman
+[submodule "k/exec"]
+	path = k/exec
+	url = https://github.com/mgroth0/exec
+[submodule "k/file"]
+	path = k/file
+	url = https://github.com/mgroth0/file
+[submodule "k/fx"]
+	path = k/fx
+	url = https://github.com/mgroth0/fx
+[submodule "k/fxlib"]
+	path = k/fxlib
+	url = https://github.com/mgroth0/fxlib
+[submodule "k/game"]
+	path = k/game
+	url = https://github.com/mgroth0/game
+[submodule "k/globallisteners"]
+	path = k/globallisteners
+	url = https://github.com/mgroth0/globallisteners
+[submodule "k/gui"]
+	path = k/gui
+	url = https://github.com/mgroth0/gui
+[submodule "k/hotkey"]
+	path = k/hotkey
+	url = https://github.com/mgroth0/hotkey
+[submodule "k/html"]
+	path = k/html
+	url = https://github.com/mgroth0/html
+[submodule "k/hurricanefx"]
+	path = k/hurricanefx
+	url = https://github.com/mgroth0/hurricanefx
+[submodule "k/idea"]
+	path = k/idea
+	url = https://github.com/mgroth0/idea
+[submodule "k/json"]
+	path = k/json
+	url = https://github.com/mgroth0/json
+[submodule "k/kbuild"]
+	path = k/kbuild
+	url = https://github.com/mgroth0/kbuild
+[submodule "k/key"]
+	path = k/key
+	url = https://github.com/mgroth0/key
+[submodule "k/kjg"]
+	path = k/kjg
+	url = https://github.com/mgroth0/kjg
+[submodule "k/kjlib"]
+	path = k/kjlib
+	url = https://github.com/mgroth0/kjlib
+[submodule "k/klib"]
+	path = k/klib
+	url = https://github.com/mgroth0/klib
+[submodule "k/kn"]
+	path = k/kn
+	url = https://github.com/mgroth0/kn
+[submodule "k/launch"]
+	path = k/launch
+	url = https://github.com/mgroth0/launch
+[submodule "k/maven"]
+	path = k/maven
+	url = https://github.com/mgroth0/maven
+[submodule "k/mstruct"]
+	path = k/mstruct
+	url = https://github.com/mgroth0/mstruct
+[submodule "k/music"]
+	path = k/music
+	url = https://github.com/mgroth0/music
+[submodule "k/reflect"]
+	path = k/reflect
+	url = https://github.com/mgroth0/reflect
+[submodule "k/remote"]
+	path = k/remote
+	url = https://github.com/mgroth0/remote
+[submodule "k/res"]
+	path = k/res
+	url = https://github.com/mgroth0/res
+[submodule "k/slidespace"]
+	path = k/slidespace
+	url = https://github.com/mgroth0/slidespace
+[submodule "k/stream"]
+	path = k/stream
+	url = https://github.com/mgroth0/stream
+[submodule "k/top"]
+	path = k/top
+	url = https://github.com/mgroth0/top
+[submodule "k/udp"]
+	path = k/udp
+	url = https://github.com/mgroth0/udp
+[submodule "k/eeg"]
+	path = k/eeg
+	url = https://github.com/mgroth0/eeg
+[submodule "k/v1"]
+	path = k/v1
+	url = https://github.com/mgroth0/v1
+[submodule "k/nn"]
+	path = k/nn
+	url = https://github.com/mgroth0/nn
+[submodule "k/stim"]
+	path = k/stim
+	url = https://github.com/mgroth0/stim
+[submodule "k/jdemo"]
+	path = k/jdemo
+	url = https://github.com/mgroth0/jdemo
+[submodule "k/sempart"]
+	path = k/sempart
+	url = https://github.com/mgroth0/sempart
+[submodule "k/kjs"]
+	path = k/kjs
+	url = https://github.com/mgroth0/kjs
+[submodule "k/sim"]
+	path = k/sim
+	url = https://github.com/mgroth0/sim
