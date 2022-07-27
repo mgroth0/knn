@@ -130,6 +130,6 @@ buildscript {
 applySettings()
 
 
-//gradle.rootProject {
-//  rootBuild()
-//}
+gradle.rootProject {
+  rootBuild()
+}
