@@ -1,28 +1,9 @@
-import matt.kbuild.root.rootBuild
 import matt.kbuild.settings.applySettings
-
-//pluginManagement {
-//
-//  val props = java.util.Properties().apply {
-//	load(
-//	  buildscript.sourceFile!!.parentFile.resolve("gradle.properties").reader()
-//	)
-//  }
-//
-//
-//  plugins {
-//	id("com.github.johnrengelman.shadow").version(props["shadowPluginVersion"]!!.toString())
-//	id("com.gradle.enterprise").version(props["gradleEnterprisePluginVersion"]!!.toString())
-//  }
-//}
 
 buildscript {
 
 
   println("these should be properties. I should never have to edit this code. In fact, it should be compiled.")
-  val PARTIAL_BOOTSTRAP =
-	false /*should i just always keep this true now that I always will have a kbuild jar anyway for OpenMind?*/
-  val NUM_BACK = 0
 
 
   repositories {
@@ -49,12 +30,12 @@ buildscript {
   dependencies {
 
 
-	//	val props = java.util.Properties().apply {
-	//	  load(
-	//		sourceFile!!.parentFile.resolve("gradle.properties").reader()
-	//		//		this@applySettings.buildscript.sourceFile!!.parentFile.resolve("gradle.properties").reader()
-	//	  )
-	//	}
+	val props = java.util.Properties().apply {
+	  load(
+		sourceFile!!.parentFile.resolve("gradle.properties").reader()
+		//		this@applySettings.buildscript.sourceFile!!.parentFile.resolve("gradle.properties").reader()
+	  )
+	}
 
 	val osName = System.getProperty("os.name")
 
@@ -69,12 +50,12 @@ buildscript {
 	  ).toURL().readText()/*.openStream().bufferedReader()*/
 
 	fun stupidTomlVersion(key: String) = run {
-//	  println("looking for $key")
+	  //	  println("looking for $key")
 	  libsText
 		.lines()
 		/*.filter*/
 		.first {
-//		  println("is $key in \"$it\"")
+		  //		  println("is $key in \"$it\"")
 		  key in it
 		}
 		/*.findFirst()
@@ -99,12 +80,14 @@ buildscript {
 	val registeredDir = userHomeFolder.resolve("registered")
 	val kbuildDir = registeredDir.resolve("kbuild")
 
+	val numBack = props.get("NUM_BACK").toString().toInt()
+
 	if (osName == "Windows 11") {
 	  classpath(files("Y:\\kbuild.jar"))
-	} else if (/*osName == "Linux" ||*/ PARTIAL_BOOTSTRAP) {
+	} else if (/*osName == "Linux" ||*/ props.get("PARTIAL_BOOTSTRAP").toString().toBoolean()) {
 	  classpath(files(registeredFolder.resolve("kbuild.jar")))
 	  /*} else if (NUM_BACK == 0) classpath("matt.flow:kbuild:+")*/
-	} else if (NUM_BACK == 0) classpath(fileTree(registeredDir.resolve("bin/dist/kbuild/lib")))
+	} else if (numBack == 0) classpath(fileTree(registeredDir.resolve("bin/dist/kbuild/lib")))
 	else {
 
 	  /*	  val recentVersion = userHomeFolder.resolve(".m2/repository/matt/flow/kbuild").list()!!.mapNotNull {
@@ -115,16 +98,13 @@ buildscript {
 
 	  val recentVersion = kbuildDir.list()!!.mapNotNull {
 		it.toLongOrNull()
-	  }.sorted().reversed()[NUM_BACK]
+	  }.sorted().reversed()[numBack]
 	  classpath(fileTree(kbuildDir.resolve("$recentVersion")))
 
 
 	}
   }
+
 }
 
-
-//plugins {
-//  id("com.github.johnrengelman.shadow")
-//}
 applySettings()
