@@ -20,7 +20,7 @@ buildscript {
 
   val PARTIAL_BOOTSTRAP =
 	false /*should i just always keep this true now that I always will have a kbuild jar anyway for OpenMind?*/
-  val NUM_BACK = 0
+  val NUM_BACK = 1
 
 
   repositories {
