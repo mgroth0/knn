@@ -21,7 +21,7 @@ buildscript {
   println("these should be properties. I should never have to edit this code. In fact, it should be compiled.")
   val PARTIAL_BOOTSTRAP =
 	false /*should i just always keep this true now that I always will have a kbuild jar anyway for OpenMind?*/
-  val NUM_BACK = 1
+  val NUM_BACK = 0
 
 
   repositories {
