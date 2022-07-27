@@ -3,8 +3,6 @@ import matt.kbuild.settings.applySettings
 buildscript {
 
 
-  println("these should be properties. I should never have to edit this code. In fact, it should be compiled.")
-
 
   repositories {
 	mavenLocal()
