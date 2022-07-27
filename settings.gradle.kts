@@ -47,12 +47,12 @@ buildscript {
   dependencies {
 
 
-	val props = java.util.Properties().apply {
-	  load(
-		sourceFile!!.parentFile.resolve("gradle.properties").reader()
-		//		this@applySettings.buildscript.sourceFile!!.parentFile.resolve("gradle.properties").reader()
-	  )
-	}
+	//	val props = java.util.Properties().apply {
+	//	  load(
+	//		sourceFile!!.parentFile.resolve("gradle.properties").reader()
+	//		//		this@applySettings.buildscript.sourceFile!!.parentFile.resolve("gradle.properties").reader()
+	//	  )
+	//	}
 
 	val osName = System.getProperty("os.name")
 
@@ -60,26 +60,37 @@ buildscript {
 	val registeredFolder = userHomeFolder.resolve("registered")
 
 
-	val stupidKtVersion = /*sourceFile!!.parentFile.resolve("RootFiles")*/
-	  (
-		  registeredFolder.resolve("common").resolve("libs.versions.toml").takeIf { it.exists() }?.bufferedReader()
-			?: java.net.URI(
-			  "https://raw.githubusercontent.com/mgroth0/common/master/libs.versions.toml"
-			).toURL().openStream().bufferedReader()
-		  )
+	val libsVersionToml = registeredFolder.resolve("common").resolve("libs.versions.toml").takeIf { it.exists() }
+	val libsText = libsVersionToml?.readText()/*.bufferedReader()*/
+	  ?: java.net.URI(
+		"https://raw.githubusercontent.com/mgroth0/common/master/libs.versions.toml"
+	  ).toURL().readText()/*.openStream().bufferedReader()*/
+
+	fun stupidTomlVersion(key: String) = run {
+//	  println("looking for $key")
+	  libsText
 		.lines()
-		.filter { "kotlin" in it }
-		.findFirst()
-		.get()
-		.substringAfter("kotlin")
+		/*.filter*/
+		.first {
+		  println("is $key in \"$it\"")
+		  key in it
+		}
+		/*.findFirst()
+		.get()*/
+		.substringAfter(key)
 		.substringAfter('"')
 		.substringBefore('"')
+	}
+
+	val stupidKtVersion = stupidTomlVersion("kotlin")
 
 	classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$stupidKtVersion")
 	classpath("org.jetbrains.kotlin:kotlin-serialization:$stupidKtVersion")
-	classpath("com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:${props["gradleEnterprisePluginVersion"]!!}")
-	classpath("gradle.plugin.com.github.johnrengelman:shadow:${props["shadowPluginVersion"]!!}")
-	classpath("com.dorongold.plugins:task-tree:${props["taskTreeVersion"]!!}")
+	classpath(
+	  "com.gradle.enterprise:com.gradle.enterprise.gradle.plugin:${stupidTomlVersion("gradleEnterprisePluginVersion")}"
+	)
+	classpath("gradle.plugin.com.github.johnrengelman:shadow:${stupidTomlVersion("shadowPluginVersion")}")
+	classpath("com.dorongold.plugins:task-tree:${stupidTomlVersion("taskTreeVersion")}")
 
 	val registeredDir = userHomeFolder.resolve("registered")
 	val kbuildDir = registeredDir.resolve("kbuild")
