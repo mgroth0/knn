@@ -1,3 +1,4 @@
+import matt.kbuild.root.rootBuild
 import matt.kbuild.settings.applySettings
 
 //pluginManagement {
@@ -127,3 +128,8 @@ buildscript {
 //  id("com.github.johnrengelman.shadow")
 //}
 applySettings()
+
+
+//gradle.rootProject {
+//  rootBuild()
+//}
