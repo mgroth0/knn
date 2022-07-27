@@ -91,6 +91,7 @@ buildscript {
 	)
 	classpath("gradle.plugin.com.github.johnrengelman:shadow:${stupidTomlVersion("shadowPluginVersion")}")
 	classpath("com.dorongold.plugins:task-tree:${stupidTomlVersion("taskTreeVersion")}")
+	classpath("org.panteleyev:jpackage-gradle-plugin:${stupidTomlVersion("jPackage")}")
 
 	val registeredDir = userHomeFolder.resolve("registered")
 	val kbuildDir = registeredDir.resolve("kbuild")
