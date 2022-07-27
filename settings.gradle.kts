@@ -72,7 +72,7 @@ buildscript {
 		.lines()
 		/*.filter*/
 		.first {
-		  println("is $key in \"$it\"")
+//		  println("is $key in \"$it\"")
 		  key in it
 		}
 		/*.findFirst()
