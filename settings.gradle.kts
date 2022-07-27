@@ -9,7 +9,11 @@ buildscript {
 	  //		this@applySettings.buildscript.sourceFile!!.parentFile.resolve("gradle.properties").reader()
 	)
   }
-  val VERBOSE = props["verboseLogging"].toString().toBoolean()
+
+  fun prop(key: String) = (gradle.startParameter.projectProperties[key] ?: props[key].toString())
+
+  val VERBOSE = prop("verboseLogging").toBoolean()
+
 
   if (VERBOSE) println("top of settings.gradle.kts buildscript block")
 
@@ -80,11 +84,11 @@ buildscript {
 	val registeredDir = userHomeFolder.resolve("registered")
 	val kbuildDir = registeredDir.resolve("kbuild")
 
-	val numBack = props.get("NUM_BACK").toString().toInt()
+	val numBack = prop("NUM_BACK").toString().toInt()
 
 	if (osName == "Windows 11") {
 	  classpath(files("Y:\\kbuild.jar"))
-	} else if (/*osName == "Linux" ||*/ props.get("PARTIAL_BOOTSTRAP").toString().toBoolean()) {
+	} else if (/*osName == "Linux" ||*/ prop("PARTIAL_BOOTSTRAP").toString().toBoolean()) {
 	  classpath(files(registeredFolder.resolve("kbuild.jar")))
 	  /*} else if (NUM_BACK == 0) classpath("matt.flow:kbuild:+")*/
 	} else if (numBack == 0) classpath(fileTree(registeredDir.resolve("bin/dist/kbuild/lib")))
@@ -110,3 +114,4 @@ buildscript {
 }
 
 applySettings()
+
