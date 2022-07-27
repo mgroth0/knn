@@ -3,6 +3,15 @@ import matt.kbuild.settings.applySettings
 buildscript {
 
 
+  val props = java.util.Properties().apply {
+	load(
+	  sourceFile!!.parentFile.resolve("gradle.properties").reader()
+	  //		this@applySettings.buildscript.sourceFile!!.parentFile.resolve("gradle.properties").reader()
+	)
+  }
+  val VERBOSE = props["verboseLogging"].toString().toBoolean()
+
+  if (VERBOSE) println("top of settings.gradle.kts buildscript block")
 
   repositories {
 	mavenLocal()
@@ -27,13 +36,6 @@ buildscript {
   }
   dependencies {
 
-
-	val props = java.util.Properties().apply {
-	  load(
-		sourceFile!!.parentFile.resolve("gradle.properties").reader()
-		//		this@applySettings.buildscript.sourceFile!!.parentFile.resolve("gradle.properties").reader()
-	  )
-	}
 
 	val osName = System.getProperty("os.name")
 
@@ -102,6 +104,8 @@ buildscript {
 
 	}
   }
+
+  if (VERBOSE) println("bottom of settings.gradle.kts buildscript block")
 
 }
 
