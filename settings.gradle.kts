@@ -128,8 +128,3 @@ buildscript {
 //  id("com.github.johnrengelman.shadow")
 //}
 applySettings()
-
-
-gradle.rootProject {
-  rootBuild()
-}
