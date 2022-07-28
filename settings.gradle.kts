@@ -116,16 +116,6 @@ buildscript {
 
 }
 
-//gradle.rootProject {
-//  subprojects.forEach {
-//	val f = (it.projectDirM + "buildJsonBackup.json")
-//	if (f.exists()) {
-//	  f.copyToFast(f.resolveSibling("buildJsonBackup2.json"))
-//	  f.copyToFast(f.resolveSibling("build.json"))
-//	}
-//  }
-//}
-
 applySettings()
 
 
