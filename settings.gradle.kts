@@ -1,4 +1,7 @@
+import matt.auto.copyToFast
+import matt.kbuild.gbuild.projectDirM
 import matt.kbuild.settings.applySettings
+import matt.klib.lang.err
 
 buildscript {
 
@@ -113,5 +116,16 @@ buildscript {
 
 }
 
+//gradle.rootProject {
+//  subprojects.forEach {
+//	val f = (it.projectDirM + "buildJsonBackup.json")
+//	if (f.exists()) {
+//	  f.copyToFast(f.resolveSibling("buildJsonBackup2.json"))
+//	  f.copyToFast(f.resolveSibling("build.json"))
+//	}
+//  }
+//}
+
 applySettings()
+
 
