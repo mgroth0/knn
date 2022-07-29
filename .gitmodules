@@ -133,3 +133,6 @@
 [submodule "k/sim"]
 	path = k/sim
 	url = https://github.com/mgroth0/sim
+[submodule "k/notify"]
+	path = k/notify
+	url = https://github.com/mgroth0/notify
