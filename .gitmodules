@@ -139,3 +139,6 @@
 [submodule "k/script"]
 	path = k/script
 	url = https://github.com/mgroth0/script
+[submodule "k/task"]
+	path = k/task
+	url = https://github.com/mgroth0/task
