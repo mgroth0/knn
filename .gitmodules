@@ -136,3 +136,6 @@
 [submodule "k/notify"]
 	path = k/notify
 	url = https://github.com/mgroth0/notify
+[submodule "k/script"]
+	path = k/script
+	url = https://github.com/mgroth0/script
