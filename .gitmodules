@@ -142,3 +142,6 @@
 [submodule "k/task"]
 	path = k/task
 	url = https://github.com/mgroth0/task
+[submodule "k/bin"]
+	path = k/bin
+	url = https://github.com/mgroth0/bin
