@@ -91,7 +91,7 @@ buildscript {
 
 	if (osName == "Windows 11") {
 	  classpath(files("Y:\\kbuild.jar"))
-	} else if (/*osName == "Linux" ||*/ prop("PARTIAL_BOOTSTRAP").toString().toBoolean()) {
+	} else if (/*osName == "Linux" ||*/ prop("PARTIAL_BOOTSTRAP").toBoolean()) {
 	  classpath(files(registeredFolder.resolve("kbuild.jar")))
 	  /*} else if (NUM_BACK == 0) classpath("matt.flow:kbuild:+")*/
 	} else if (numBack == 0) classpath(fileTree(registeredDir.resolve("bin/dist/kbuild/lib")))
