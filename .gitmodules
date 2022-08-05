@@ -145,3 +145,6 @@
 [submodule "k/bin"]
 	path = k/bin
 	url = https://github.com/mgroth0/bin
+[submodule "k/obs"]
+	path = k/obs
+	url = https://github.com/mgroth0/obs
