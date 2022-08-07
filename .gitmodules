@@ -148,3 +148,6 @@
 [submodule "k/obs"]
 	path = k/obs
 	url = https://github.com/mgroth0/obs
+[submodule "k/pdf"]
+	path = k/pdf
+	url = https://github.com/mgroth0/pdf
