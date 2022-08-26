@@ -151,3 +151,6 @@
 [submodule "k/pdf"]
 	path = k/pdf
 	url = https://github.com/mgroth0/pdf
+[submodule "k/kcplug"]
+	path = k/kcplug
+	url = https://github.com/mgroth0/kcplug

@@ -1,7 +1,5 @@
-import matt.auto.copyToFast
-import matt.kbuild.gbuild.projectDirM
+
 import matt.kbuild.settings.applySettings
-import matt.klib.lang.err
 
 buildscript {
 
@@ -83,6 +81,9 @@ buildscript {
 	classpath("com.dorongold.plugins:task-tree:${stupidTomlVersion("taskTreeVersion")}")
 	classpath("org.panteleyev:jpackage-gradle-plugin:${stupidTomlVersion("jPackage")}")
 	classpath("org.jetbrains.intellij.plugins:gradle-intellij-plugin:${stupidTomlVersion("gradleIntelliJPlugin")}")
+
+	/*/*https://discuss.kotlinlang.org/t/is-there-an-up-to-date-tutorial-for-writing-a-kotlin-compiler-plugin-for-kotlin-1-7-10/25535*/*/
+	/*classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$stupidKtVersion")*/
 
 	val registeredDir = userHomeFolder.resolve("registered")
 	val kbuildDir = registeredDir.resolve("kbuild")
