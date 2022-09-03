@@ -151,3 +151,15 @@
 [submodule "k/kcplug"]
 	path = k/kcplug
 	url = https://github.com/mgroth0/kcplug
+[submodule "k/collect"]
+	path = k/collect
+	url = https://github.com/mgroth0/collect
+[submodule "k/http"]
+	path = k/http
+	url = https://github.com/mgroth0/http
+[submodule "k/lang"]
+	path = k/lang
+	url = https://github.com/mgroth0/lang
+[submodule "k/log"]
+	path = k/log
+	url = https://github.com/mgroth0/log
