@@ -70,9 +70,6 @@
 [submodule "k/kjlib"]
 	path = k/kjlib
 	url = https://github.com/mgroth0/kjlib
-[submodule "k/klib"]
-	path = k/klib
-	url = https://github.com/mgroth0/klib
 [submodule "k/kn"]
 	path = k/kn
 	url = https://github.com/mgroth0/kn
