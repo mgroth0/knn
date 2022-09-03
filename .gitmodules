@@ -166,3 +166,15 @@
 [submodule "k/math"]
 	path = k/math
 	url = https://github.com/mgroth0/math
+[submodule "k/model"]
+	path = k/model
+	url = https://github.com/mgroth0/model
+[submodule "k/pref"]
+	path = k/pref
+	url = https://github.com/mgroth0/pref
+[submodule "k/prim"]
+	path = k/prim
+	url = https://github.com/mgroth0/prim
+[submodule "k/time"]
+	path = k/time
+	url = https://github.com/mgroth0/time
