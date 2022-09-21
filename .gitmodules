@@ -178,3 +178,6 @@
 [submodule "k/time"]
 	path = k/time
 	url = https://github.com/mgroth0/time
+[submodule "k/cbor"]
+	path = k/cbor
+	url = https://github.com/mgroth0/cbor
