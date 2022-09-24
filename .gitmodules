@@ -181,3 +181,6 @@
 [submodule "k/cbor"]
 	path = k/cbor
 	url = https://github.com/mgroth0/cbor
+[submodule "k/codegen"]
+	path = k/codegen
+	url = https://github.com/mgroth0/codegen
