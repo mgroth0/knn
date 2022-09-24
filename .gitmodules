@@ -184,3 +184,6 @@
 [submodule "k/codegen"]
 	path = k/codegen
 	url = https://github.com/mgroth0/codegen
+[submodule "k/service"]
+	path = k/service
+	url = https://github.com/mgroth0/service
