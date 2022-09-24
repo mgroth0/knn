@@ -187,3 +187,6 @@
 [submodule "k/service"]
 	path = k/service
 	url = https://github.com/mgroth0/service
+[submodule "k/conda"]
+	path = k/conda
+	url = https://github.com/mgroth0/conda
