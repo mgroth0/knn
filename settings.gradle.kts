@@ -40,9 +40,9 @@ buildscript {
 	val kbuildDir = registeredDir.resolve("kbuild")
 	val numBack = prop("NUM_BACK").toInt()
 	if (osName == "Windows 11") {
-	  classpath(files("Y:\\kbuild.jar"))
+	  classpath(files("Y:\\kbuild.jar")) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
 	} else if (prop("PARTIAL_BOOTSTRAP").toBoolean()) {
-	  classpath(files(registeredDir.resolve("kbuild.jar")))
+	  classpath(files(registeredDir.resolve("kbuild.jar"))) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
 	} else if (numBack == 0) classpath(fileTree(registeredDir.resolve("bin/dist/kbuild/lib")))
 	else {
 	  val recentVersion = kbuildDir.list()!!.mapNotNull {
