@@ -32,29 +32,38 @@ buildscript {
 	val osName = System.getProperty("os.name")
 	val userHomeFolder = File(System.getProperty("user.home"))
 	val registeredDir = userHomeFolder.resolve("registered")
-	val kbuildDir = registeredDir.resolve("kbuild")
-	val numBack = prop("NUM_BACK").toInt()
-	if (osName == "Windows 11") {
-	  classpath(files("Y:\\kbuild.jar")) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
-	} else if (prop("PARTIAL_BOOTSTRAP").toBoolean()) {
-	  classpath(files(registeredDir.resolve("kbuild.jar"))) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
-	} else {
-	  val kbuildLibsFolder = if (numBack == 0) registeredDir.resolve("bin/dist/kbuild/lib")
-	  else {
-		val recentVersion = kbuildDir.list()!!.mapNotNull {
-		  it.toLongOrNull()
-		}.sorted().reversed()[numBack]
-		kbuildDir.resolve("$recentVersion")
-	  }
-	  classpath(fileTree(kbuildLibsFolder))
-	  val deps = kbuildLibsFolder.resolve("deps.txt").readLines().filter { it.isNotBlank() }
-	  /*val depsTxt = gradle.rootProject.projectDir.resolve("deps.txt")
-	  require(!depsTxt.exists())
-	  depsTxt.writeText(deps.joinToString("\n"))*/
-	  deps.forEach {
-		classpath(it)
+
+	listOf(
+	  "kbuild"
+	).forEach { gradleMod ->
+
+	  //	val kbuildDir = registeredDir.resolve("kbuild")
+	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
+	  val numBack = prop("NUM_BACK").toInt()
+	  if (osName == "Windows 11") {
+		classpath(files("Y:\\$gradleMod.jar")) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
+	  } else if (prop("PARTIAL_BOOTSTRAP").toBoolean()) {
+		//	  classpath(files(registeredDir.resolve("kbuild.jar"))) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
+		classpath(files(registeredDir.resolve("gbuild/jar/$gradleMod.jar"))) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
+	  } else {
+		val kbuildLibsFolder = if (numBack == 0) registeredDir.resolve("bin/dist/$gradleMod/lib")
+		else {
+		  val recentVersion = kbuildDir.list()!!.mapNotNull {
+			it.toLongOrNull()
+		  }.sorted().reversed()[numBack]
+		  kbuildDir.resolve("$recentVersion")
+		}
+		classpath(fileTree(kbuildLibsFolder))
+		val deps = kbuildLibsFolder.resolve("deps.txt").readLines().filter { it.isNotBlank() }
+		/*val depsTxt = gradle.rootProject.projectDir.resolve("deps.txt")
+		require(!depsTxt.exists())
+		depsTxt.writeText(deps.joinToString("\n"))*/
+		deps.forEach {
+		  classpath(it)
+		}
 	  }
 	}
+
   }
   if (VERBOSE) println("bottom of settings.gradle.kts buildscript block")
 }
@@ -66,3 +75,4 @@ depsTxt.delete()*/
 applySettings()
 
 
+//println("java 19!")
