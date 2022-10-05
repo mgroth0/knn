@@ -190,3 +190,6 @@
 [submodule "k/conda"]
 	path = k/conda
 	url = https://github.com/mgroth0/conda
+[submodule "k/sys"]
+	path = k/sys
+	url = https://github.com/mgroth0/sys
