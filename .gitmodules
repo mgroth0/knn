@@ -193,3 +193,6 @@
 [submodule "k/sys"]
 	path = k/sys
 	url = https://github.com/mgroth0/sys
+[submodule "k/test"]
+	path = k/test
+	url = https://github.com/mgroth0/test
