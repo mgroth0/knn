@@ -29,6 +29,8 @@ buildscript {
 	}
   }
   dependencies {
+
+
 	val osName = System.getProperty("os.name")
 	val userHomeFolder = File(System.getProperty("user.home"))
 	val registeredDir = userHomeFolder.resolve("registered")
@@ -44,7 +46,9 @@ buildscript {
 		classpath(files("Y:\\$gradleMod.jar")) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
 	  } else if (prop("PARTIAL_BOOTSTRAP").toBoolean()) {
 		//	  classpath(files(registeredDir.resolve("kbuild.jar"))) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
-		classpath(files(registeredDir.resolve("gbuild/jar/$gradleMod.jar"))) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
+		classpath(
+		  files(registeredDir.resolve("gbuild/jar/$gradleMod.jar"))
+		) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
 	  } else {
 		val kbuildLibsFolder = if (numBack == 0) registeredDir.resolve("bin/dist/$gradleMod/lib")
 		else {
@@ -73,6 +77,3 @@ buildscript {
 val s = depsTxt.readText()
 depsTxt.delete()*/
 applySettings()
-
-
-//println("java 19!")
