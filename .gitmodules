@@ -196,3 +196,6 @@
 [submodule "k/test"]
 	path = k/test
 	url = https://github.com/mgroth0/test
+[submodule "k/matlab"]
+	path = k/matlab
+	url = https://github.com/mgroth0/matlab
