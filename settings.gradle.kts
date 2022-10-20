@@ -36,7 +36,8 @@ buildscript {
 	val registeredDir = userHomeFolder.resolve("registered")
 
 	listOf(
-	  "kbuild"
+	  "kbuild",
+	  
 	).forEach { gradleMod ->
 
 	  //	val kbuildDir = registeredDir.resolve("kbuild")
