@@ -1,3 +1,4 @@
+
 import matt.kbuild.settings.applySettings
 import matt.mbuild.applyMSettings
 
@@ -21,8 +22,7 @@ buildscript {
 	maven(
 	  url = "https://s01.oss.sonatype.org/content/repositories/releases/"
 	)
-  }
-  /*this is necessary for libs.xmlutil.core and libs.xmlutil.serialization*/
+  }/*this is necessary for libs.xmlutil.core and libs.xmlutil.serialization*/
   val androidAttribute = Attribute.of("net.devrieze.android", Boolean::class.javaObjectType)
   configurations.all {
 	attributes {
@@ -36,18 +36,31 @@ buildscript {
 	val userHomeFolder = File(System.getProperty("user.home"))
 	val registeredDir = userHomeFolder.resolve("registered")
 
+	class Dep(val group: String, val name: String, val version: String) {
+	  override fun toString(): String {
+		return "$group:$name:$version"
+	  }
+	}
+
+	val depsSeen = mutableListOf<Dep>()
+
+
+	val depsTxt = buildscript.sourceFile!!.parentFile.resolve("temp/deps.txt")
+	depsTxt.parentFile.mkdir()
+	depsTxt.writeText("")
+
 	listOf(
-	  "kbuild",
-	  "mbuild"
+	  "kbuild", "mbuild"
 	).forEach { gradleMod ->
 
-	  //	val kbuildDir = registeredDir.resolve("kbuild")
 	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
 	  val numBack = prop("NUM_BACK").toInt()
 	  if (osName == "Windows 11") {
 		classpath(files("Y:\\$gradleMod.jar")) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
-	  } else if (prop("PARTIAL_BOOTSTRAP").toBoolean()) {
-		//	  classpath(files(registeredDir.resolve("kbuild.jar"))) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
+	  } else if (prop(
+		  "PARTIAL_BOOTSTRAP"
+		).toBoolean()
+	  ) {        //	  classpath(files(registeredDir.resolve("kbuild.jar"))) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
 		classpath(
 		  files(registeredDir.resolve("gbuild/jar/$gradleMod.jar"))
 		) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
@@ -60,22 +73,33 @@ buildscript {
 		  kbuildDir.resolve("$recentVersion")
 		}
 		classpath(fileTree(kbuildLibsFolder))
-		val deps = kbuildLibsFolder.resolve("deps.txt").readLines().filter { it.isNotBlank() }
-		/*val depsTxt = gradle.rootProject.projectDir.resolve("deps.txt")
-		require(!depsTxt.exists())
-		depsTxt.writeText(deps.joinToString("\n"))*/
+		val deps = kbuildLibsFolder.resolve("deps.txt").readLines().filter { it.isNotBlank() }.map {
+		  val parts = it.split(":")
+		  Dep(parts[0], parts[1], parts[2])
+		}
+
+
 		deps.forEach {
-		  classpath(it)
+		  val thisDep = it
+		  depsSeen.firstOrNull { it.group == thisDep.group && it.name == thisDep.name }?.let {
+			require(it.version == thisDep.version) {
+			  "conflicting versions for ${thisDep.group}:${thisDep.name}"
+			}
+		  } ?: run {
+			classpath(thisDep.toString())
+			depsSeen += thisDep
+			depsTxt.appendText("$thisDep\n")
+		  }
 		}
 	  }
 	}
+
 
   }
   if (VERBOSE) println("bottom of settings.gradle.kts buildscript block")
 }
 
-/*TODO: somehow send plugin version info into the next function*/
-/*val depsTxt = gradle.rootProject.projectDir.resolve("deps.txt")
+/*TODO: somehow send plugin version info into the next function*//*val depsTxt = gradle.rootProject.projectDir.resolve("deps.txt")
 val s = depsTxt.readText()
 depsTxt.delete()*/
 applySettings()
