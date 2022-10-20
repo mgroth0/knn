@@ -205,3 +205,6 @@
 [submodule "k/arduino"]
 	path = k/arduino
 	url = https://github.com/mgroth0/arduino
+[submodule "k/mbuild"]
+	path = k/mbuild
+	url = https://github.com/mgroth0/mbuild
