@@ -1,4 +1,3 @@
-
 import matt.kbuild.settings.applySettings
 import matt.mbuild.applyMSettings
 
@@ -45,9 +44,6 @@ buildscript {
 	val depsSeen = mutableListOf<Dep>()
 
 
-	val depsTxt = buildscript.sourceFile!!.parentFile.resolve("temp/deps.txt")
-	depsTxt.parentFile.mkdir()
-	depsTxt.writeText("")
 
 	listOf(
 	  "kbuild", "mbuild"
@@ -88,7 +84,6 @@ buildscript {
 		  } ?: run {
 			classpath(thisDep.toString())
 			depsSeen += thisDep
-			depsTxt.appendText("$thisDep\n")
 		  }
 		}
 	  }
@@ -99,8 +94,5 @@ buildscript {
   if (VERBOSE) println("bottom of settings.gradle.kts buildscript block")
 }
 
-/*TODO: somehow send plugin version info into the next function*//*val depsTxt = gradle.rootProject.projectDir.resolve("deps.txt")
-val s = depsTxt.readText()
-depsTxt.delete()*/
 applySettings()
 applyMSettings()
