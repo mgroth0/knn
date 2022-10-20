@@ -1,4 +1,5 @@
 import matt.kbuild.settings.applySettings
+import matt.mbuild.applyMSettings
 
 
 buildscript {
@@ -78,3 +79,4 @@ buildscript {
 val s = depsTxt.readText()
 depsTxt.delete()*/
 applySettings()
+applyMSettings()
