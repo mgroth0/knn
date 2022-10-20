@@ -199,3 +199,9 @@
 [submodule "k/matlab"]
 	path = k/matlab
 	url = https://github.com/mgroth0/matlab
+[submodule "k/serial"]
+	path = k/serial
+	url = https://github.com/mgroth0/serial
+[submodule "k/arduino"]
+	path = k/arduino
+	url = https://github.com/mgroth0/arduino
