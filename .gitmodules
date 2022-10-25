@@ -211,3 +211,6 @@
 [submodule "buildpack"]
 	path = buildpack
 	url = https://github.com/mgroth0/buildpack
+[submodule "k/heroku"]
+	path = k/heroku
+	url = https://github.com/mgroth0/heroku
