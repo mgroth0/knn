@@ -136,9 +136,6 @@
 [submodule "k/script"]
 	path = k/script
 	url = https://github.com/mgroth0/script
-[submodule "k/task"]
-	path = k/task
-	url = https://github.com/mgroth0/task
 [submodule "k/bin"]
 	path = k/bin
 	url = https://github.com/mgroth0/bin
@@ -214,3 +211,6 @@
 [submodule "k/heroku"]
 	path = k/heroku
 	url = https://github.com/mgroth0/heroku
+[submodule "k/task"]
+	path = k/task
+	url = https://github.com/mgroth0/task
