@@ -61,13 +61,16 @@ buildscript {
 		  files(registeredDir.resolve("gbuild/jar/$gradleMod.jar"))
 		) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
 	  } else {
-		val kbuildLibsFolder = if (numBack == 0) registeredDir.resolve("bin/dist/$gradleMod/lib")
-		else {
-		  val recentVersion = kbuildDir.list()!!.mapNotNull {
-			it.toLongOrNull()
-		  }.sorted().reversed()[numBack]
-		  kbuildDir.resolve("$recentVersion")
-		}
+
+		/*deps.txt is no longer reliable copied to bin/dist/$gradleMod/lib because it is copied in another task*/
+
+		/*val kbuildLibsFolder = if (numBack == 0) registeredDir.resolve("bin/dist/$gradleMod/lib")
+		else {*/
+		val recentVersion = kbuildDir.list()!!.mapNotNull {
+		  it.toLongOrNull()
+		}.sorted().reversed()[numBack]
+		val kbuildLibsFolder = kbuildDir.resolve("$recentVersion")
+		/*}*/
 		classpath(fileTree(kbuildLibsFolder))
 		val deps = kbuildLibsFolder.resolve("deps.txt").readLines().filter { it.isNotBlank() }.map {
 		  val parts = it.split(":")
