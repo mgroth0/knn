@@ -217,3 +217,6 @@
 [submodule "k/ocean"]
 	path = k/ocean
 	url = https://github.com/mgroth0/ocean
+[submodule "k/pilotresults"]
+	path = k/pilotresults
+	url = https://github.com/mgroth0/pilotresults
