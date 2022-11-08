@@ -220,3 +220,6 @@
 [submodule "k/pilotresults"]
 	path = k/pilotresults
 	url = https://github.com/mgroth0/pilotresults
+[submodule "k/blender"]
+	path = k/blender
+	url = https://github.com/mgroth0/blender
