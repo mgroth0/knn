@@ -223,3 +223,6 @@
 [submodule "k/blender"]
 	path = k/blender
 	url = https://github.com/mgroth0/blender
+[submodule "k/webapp"]
+	path = k/webapp
+	url = https://github.com/mgroth0/webapp
