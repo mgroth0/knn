@@ -226,3 +226,6 @@
 [submodule "k/webapp"]
 	path = k/webapp
 	url = https://github.com/mgroth0/webapp
+[submodule "k/command"]
+	path = k/command
+	url = https://github.com/mgroth0/command
