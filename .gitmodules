@@ -229,3 +229,6 @@
 [submodule "k/command"]
 	path = k/command
 	url = https://github.com/mgroth0/command
+[submodule "k/watchfig"]
+	path = k/watchfig
+	url = https://github.com/mgroth0/watchfig
