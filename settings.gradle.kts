@@ -1,5 +1,6 @@
 import matt.kbuild.settings.applySettings
 import matt.mbuild.applyMSettings
+import matt.mbuild.buildinfo.applyBuildInfoSettings
 
 
 buildscript {
@@ -47,8 +48,8 @@ buildscript {
 
 	listOf(
 	  "kbuild",
+	  "buildinfo",
 	  "mbuild",
-//	  "buildinfo"
 	).forEach { gradleMod ->
 
 	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
@@ -99,4 +100,5 @@ buildscript {
 }
 
 applySettings()
+applyBuildInfoSettings()
 applyMSettings()
