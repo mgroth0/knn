@@ -11,8 +11,8 @@ buildscript {
   }
 
   fun prop(key: String) = (gradle.startParameter.projectProperties[key] ?: props[key].toString())
-  val VERBOSE = prop("verboseLogging").toBoolean()
-  if (VERBOSE) println("top of settings.gradle.kts buildscript block")
+  val verbose = prop("verboseLogging").toBoolean()
+  if (verbose) println("top of settings.gradle.kts buildscript block")
   repositories {
 	mavenLocal()
 	mavenCentral()
@@ -46,7 +46,9 @@ buildscript {
 
 
 	listOf(
-	  "kbuild", "mbuild"
+	  "kbuild",
+	  "mbuild",
+//	  "buildinfo"
 	).forEach { gradleMod ->
 
 	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
@@ -78,15 +80,14 @@ buildscript {
 		}
 
 
-		deps.forEach {
-		  val thisDep = it
-		  depsSeen.firstOrNull { it.group == thisDep.group && it.name == thisDep.name }?.let {
-			require(it.version == thisDep.version) {
-			  "conflicting versions for ${thisDep.group}:${thisDep.name}"
+		deps.forEach { dep ->
+		  depsSeen.firstOrNull { it.group == dep.group && it.name == dep.name }?.let {
+			require(it.version == dep.version) {
+			  "conflicting versions for ${dep.group}:${dep.name}"
 			}
 		  } ?: run {
-			classpath(thisDep.toString())
-			depsSeen += thisDep
+			classpath(dep.toString())
+			depsSeen += dep
 		  }
 		}
 	  }
@@ -94,7 +95,7 @@ buildscript {
 
 
   }
-  if (VERBOSE) println("bottom of settings.gradle.kts buildscript block")
+  if (verbose) println("bottom of settings.gradle.kts buildscript block")
 }
 
 applySettings()
