@@ -1,5 +1,6 @@
-
 import matt.kbuild.settings.applySettings
+import matt.mbuild.applyMSettings
+import matt.mbuild.codegen.applyCodegenSettings
 
 
 buildscript {
@@ -48,16 +49,16 @@ buildscript {
 
 	listOf(
 	  "kbuild",
-	  //	  "codegen",
-	  //	  "inspect",
-	  //	  "mbuild",
+	  "codegen",
+	  "inspect",
+	  "mbuild",
 
-	).forEach { gradleMod ->
+	  ).forEach { gradleMod ->
 
 	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
 	  val numBack = prop("NUM_BACK").toInt()
 	  if (osName == "Windows 11") {
-		classpath(files("Y:\\$gradleMod.jar")) /*PROBABLY WONT WORK AFTER KBUILD DEPS LIST FILE UPDATE*/
+		error("not ready")
 	  } else {
 		val recentVersion = kbuildDir.list()!!.mapNotNull {
 		  it.toLongOrNull()
@@ -89,6 +90,6 @@ buildscript {
 }
 
 applySettings()
-//applyCodegenSettings()
-//applyInspectSettings()
-//applyMSettings()
+applyCodegenSettings()
+applyCodegenSettings()
+applyMSettings()
