@@ -18,7 +18,6 @@ buildscript {
   repositories {
 	mavenLocal()
 	mavenCentral()
-	google()
 	gradlePluginPortal()
 	maven(
 	  url = "https://s01.oss.sonatype.org/content/repositories/releases/"
