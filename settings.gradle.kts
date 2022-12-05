@@ -49,7 +49,6 @@ buildscript {
 	  "kbuild",
 	  "codegen",
 	  "inspect",
-	  "mbuild",
 
 	  ).forEach { gradleMod ->
 
@@ -90,4 +89,3 @@ buildscript {
 applySettings()
 //applyInspectSettings()
 //applyCodegenSettings()
-//applyMSettings()
