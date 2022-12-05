@@ -1,4 +1,7 @@
 import matt.kbuild.settings.applySettings
+import matt.mbuild.admin.applyAdminSettings
+import matt.mbuild.codegen.applyCodegenSettings
+import matt.mbuild.inspect.applyInspectSettings
 
 
 buildscript {
@@ -49,8 +52,8 @@ buildscript {
 	  "kbuild",
 	  "codegen",
 	  "inspect",
-
-	  ).forEach { gradleMod ->
+	  "admin"
+	).forEach { gradleMod ->
 
 	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
 	  val numBack = prop("NUM_BACK").toInt()
@@ -87,5 +90,6 @@ buildscript {
 }
 
 applySettings()
-//applyInspectSettings()
-//applyCodegenSettings()
+applyInspectSettings()
+applyCodegenSettings()
+applyAdminSettings()
