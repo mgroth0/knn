@@ -1,7 +1,4 @@
 import matt.kbuild.settings.applySettings
-import matt.mbuild.applyMSettings
-import matt.mbuild.codegen.applyCodegenSettings
-import matt.mbuild.inspect.applyInspectSettings
 
 
 buildscript {
@@ -91,6 +88,6 @@ buildscript {
 }
 
 applySettings()
-applyInspectSettings()
-applyCodegenSettings()
-applyMSettings()
+//applyInspectSettings()
+//applyCodegenSettings()
+//applyMSettings()
