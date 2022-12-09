@@ -19,9 +19,9 @@ buildscript {
 	mavenLocal()
 	mavenCentral()
 	gradlePluginPortal()
-	maven(
-	  url = "https://s01.oss.sonatype.org/content/repositories/releases/"
-	)
+//	maven(
+//	  url = "https://s01.oss.sonatype.org/content/repositories/releases/"
+//	)
   }
   /*this is necessary for libs.xmlutil.core and libs.xmlutil.serialization*/
   val androidAttribute = Attribute.of("net.devrieze.android", Boolean::class.javaObjectType)
