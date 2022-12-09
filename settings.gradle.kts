@@ -1,4 +1,7 @@
 import matt.kbuild.settings.applySettings
+import matt.mbuild.admin.applyAdminSettings
+import matt.mbuild.codegen.applyCodegenSettings
+import matt.mbuild.inspect.applyInspectSettings
 
 
 buildscript {
@@ -43,9 +46,9 @@ buildscript {
 
 	listOf(
 	  "kbuild",
-	  //	  "codegen",
-	  //	  "inspect",
-	  //	  "admin"
+	  	  "codegen",
+	  	  "inspect",
+	  	  "admin"
 	).forEach { gradleMod ->
 
 	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
@@ -83,6 +86,6 @@ buildscript {
 }
 
 applySettings()
-//applyInspectSettings()
-//applyCodegenSettings()
-//applyAdminSettings()
+applyInspectSettings()
+applyCodegenSettings()
+applyAdminSettings()
