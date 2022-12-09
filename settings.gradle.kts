@@ -1,7 +1,4 @@
 import matt.kbuild.settings.applySettings
-import matt.mbuild.admin.applyAdminSettings
-import matt.mbuild.codegen.applyCodegenSettings
-import matt.mbuild.inspect.applyInspectSettings
 
 
 buildscript {
@@ -19,9 +16,6 @@ buildscript {
 	mavenLocal()
 	mavenCentral()
 	gradlePluginPortal()
-//	maven(
-//	  url = "https://s01.oss.sonatype.org/content/repositories/releases/"
-//	)
   }
   /*this is necessary for libs.xmlutil.core and libs.xmlutil.serialization*/
   val androidAttribute = Attribute.of("net.devrieze.android", Boolean::class.javaObjectType)
@@ -49,9 +43,9 @@ buildscript {
 
 	listOf(
 	  "kbuild",
-	  "codegen",
-	  "inspect",
-	  "admin"
+	  //	  "codegen",
+	  //	  "inspect",
+	  //	  "admin"
 	).forEach { gradleMod ->
 
 	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
@@ -89,6 +83,6 @@ buildscript {
 }
 
 applySettings()
-applyInspectSettings()
-applyCodegenSettings()
-applyAdminSettings()
+//applyInspectSettings()
+//applyCodegenSettings()
+//applyAdminSettings()
