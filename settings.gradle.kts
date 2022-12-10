@@ -13,8 +13,6 @@ buildscript {
   }
 
   fun prop(key: String) = (gradle.startParameter.projectProperties[key] ?: props[key].toString())
-  val verbose = prop("verboseLogging").toBoolean()
-  if (verbose) println("top of settings.gradle.kts buildscript block")
   repositories {
 	mavenLocal()
 	mavenCentral()
@@ -46,9 +44,9 @@ buildscript {
 
 	listOf(
 	  "kbuild",
-	  	  "codegen",
-	  	  "inspect",
-	  	  "admin"
+	  "codegen",
+	  "inspect",
+	  "admin"
 	).forEach { gradleMod ->
 
 	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
@@ -82,7 +80,6 @@ buildscript {
 
 
   }
-  if (verbose) println("bottom of settings.gradle.kts buildscript block")
 }
 
 applySettings()
