@@ -3,7 +3,6 @@ import matt.mbuild.admin.applyAdminSettings
 import matt.mbuild.codegen.applyCodegenSettings
 import matt.mbuild.inspect.applyInspectSettings
 
-
 buildscript {
 
   val props by lazy {
@@ -46,7 +45,12 @@ buildscript {
 
 
 
-	listOf("kbuild", "codegen", "inspect", "admin").forEach { gradleMod ->
+	listOf(
+	  "kbuild",
+	  "codegen",
+	  "inspect",
+	  "admin"
+	).forEach { gradleMod ->
 	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
 	  val numBack = prop("NUM_BACK").toInt()
 	  if (osName == "Windows 11") {
