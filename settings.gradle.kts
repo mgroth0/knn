@@ -6,10 +6,12 @@ import matt.mbuild.inspect.applyInspectSettings
 
 buildscript {
 
-  val props = java.util.Properties().apply {
-	load(
-	  sourceFile!!.parentFile.resolve("gradle.properties").reader()
-	)
+  val props by lazy {
+	java.util.Properties().apply {
+	  load(
+		sourceFile!!.parentFile.resolve("gradle.properties").reader()
+	  )
+	}
   }
 
   fun prop(key: String) = (gradle.startParameter.projectProperties[key] ?: props[key].toString())
@@ -25,6 +27,8 @@ buildscript {
 	  attribute(androidAttribute, false)
 	}
   }
+
+
   dependencies {
 
 
@@ -42,13 +46,7 @@ buildscript {
 
 
 
-	listOf(
-	  "kbuild",
-	  "codegen",
-	  "inspect",
-	  "admin"
-	).forEach { gradleMod ->
-
+	listOf("kbuild", "codegen", "inspect", "admin").forEach { gradleMod ->
 	  val kbuildDir = registeredDir.resolve("gbuild/dist/$gradleMod")
 	  val numBack = prop("NUM_BACK").toInt()
 	  if (osName == "Windows 11") {
@@ -59,12 +57,12 @@ buildscript {
 		}.sorted().reversed()[numBack]
 		val kbuildLibsFolder = kbuildDir.resolve("$recentVersion")
 		classpath(fileTree(kbuildLibsFolder))
+
+
 		val deps = kbuildLibsFolder.resolve("deps.txt").readLines().filter { it.isNotBlank() }.map {
 		  val parts = it.split(":")
 		  Dep(parts[0], parts[1], parts[2])
 		}
-
-
 		deps.forEach { dep ->
 		  depsSeen.firstOrNull { it.group == dep.group && it.name == dep.name }?.let {
 			require(it.version == dep.version) {
@@ -80,6 +78,8 @@ buildscript {
 
 
   }
+
+
 }
 
 applySettings()
